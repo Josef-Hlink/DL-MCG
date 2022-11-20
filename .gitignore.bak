@@ -3,7 +3,7 @@ __pycache__
 .vscode
 .ipynb_checkpoints
 
-a2_data
+a2data
 data
 plots
 

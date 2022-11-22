@@ -1,6 +1,41 @@
+import os
 from typing import Tuple
+from warnings import warn
 
 import numpy as np
+
+
+def get_dirs(parent_file: str) -> dict[str, str]:
+    """
+    Returns a dictionary of directories to be used in the program. 
+    Also builds these directories if they are not already there.
+    ```
+    base
+    ├── data
+    └── results
+        ├── csv
+        ├── plots
+        └── models
+    ```
+    """
+    src = os.path.dirname(os.path.abspath(parent_file))
+    root = os.sep.join(src.split(os.sep)[:-1])
+    data = os.path.join(root, 'data')
+    results = os.path.join(root, 'results')
+    csv = os.path.join(results, 'csv')
+    models = os.path.join(results, 'models')
+    plots = os.path.join(results, 'plots')
+    
+    dirs: dict[str, str] = {}
+    for directory in (data, results, csv, models, plots):
+        basename = os.path.basename(directory)
+        if not os.path.exists(directory):
+            os.mkdir(directory)
+            print()
+            warn(f'Created empty {basename} directory at "{directory}".')
+            print()
+        dirs[basename] = directory + os.sep
+    return dirs
 
 
 def train_test_split(

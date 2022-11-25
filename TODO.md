@@ -3,10 +3,9 @@
 ## Task 1
 
 - [ ] 1.1
-    - [ ] Play around with [this repo](https://github.com/keras-team/keras/tree/tf-keras-2/examples) (keras examples) some more
-    - [ ] Specifically with dropouts, weight initializations, and running an MLP on a 3D dataset (RGB images)
-    - [ ] Report on findings
+    - [x] Play around with [this repo](https://github.com/keras-team/keras/tree/tf-keras-2/examples) (keras examples) some more
 - [ ] 1.2
+      [ ] Play around with dropouts, weight initializations, and running an MLP on a 3D dataset (RGB images)
     - [ ] Try to get CIFAR-10 to work with the MLP (maybe just with the single best model found by the F-MNIST MLP)
     - [ ] Very simple grid search over CNN architectures (number of layers, number of filters, kernel size)
     - [ ] Report on findings

@@ -40,7 +40,7 @@ def get_dirs(parent_file: str):
     return dirs
 
 
-def train_test_split(X: np.ndarray, test_size: float, y: np.ndarray = None):
+def train_test_split(X: np.ndarray, y: np.ndarray = None, test_size: float = 0.2):
     """ Splits the data up into a train and test set, labels are optional """
 
     return_y = True
@@ -56,8 +56,8 @@ def train_test_split(X: np.ndarray, test_size: float, y: np.ndarray = None):
 
     # split
     split = int(X.shape[0] * test_size)
-    X_train, X_test = X[:split], X[split:]
-    y_train, y_test = y[:split], y[split:]
+    X_train, X_test = X[split:], X[:split]
+    y_train, y_test = y[split:], y[:split]
 
     if return_y:
         return X_train, X_test, y_train, y_test

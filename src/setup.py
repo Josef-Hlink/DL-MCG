@@ -4,6 +4,7 @@ if __name__ == '__main__':
     setup(
         name = 'MCG',
         version = '0.1',
+        license = 'MIT',
         packages = find_packages(),
         install_requires = [
             'numpy',

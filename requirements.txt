@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+pillow
+ipykernel
+jupyter
+tensorflow-macos; sys_platform == "darwin"
+tensorflow; sys_platform != "darwin"

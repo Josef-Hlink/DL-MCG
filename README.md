@@ -1,9 +1,14 @@
 # MLP, CNN, GAN
 
+This repository serves as the submission for Assignment 2 of the course Introduction to Deep Learning (4343INTDL) at Leiden University.
+
 Contributors:
 * Koen
 * Willem
 * Josef
+
+
+## Data
 
 Cats data source: [fferlito/Cat-faces-dataset](https://github.com/fferlito/Cat-faces-dataset).
 
@@ -11,31 +16,44 @@ Part 1 of the gzipped data (<100MB) is present in this repo.
 
 Full file (cats.tar.gz) is hosted on [Josef's Google Drive](https://drive.google.com/file/d/1eJElIjkH8TIeEjANcOflliT9apRzXpWE/view?usp=sharing).
 
-
-## Usage
-
 Download the full cats.tar.gz file, put it in the data folder and extract.
 Alternatively, just do the same with the cats-1.tar.gz file (no download needed).
 
-```
+```shell
 mkdir data
 cd data
 wget https://drive.google.com/file/d/1eJElIjkH8TIeEjANcOflliT9apRzXpWE/view?usp=sharing
 tar -xvzf cats.tar.gz
 ```
 
-Clock images can be found [here](https://surfdrive.surf.nl/files/index.php/s/B8emtQRGUeAaqmz).
+Clock images can be found on [surfdrive](https://surfdrive.surf.nl/files/index.php/s/B8emtQRGUeAaqmz).
 
-```
+```shell
 wget https://surfdrive.surf.nl/files/index.php/s/B8emtQRGUeAaqmz/download -O clock_data.zip
 unzip clock_data.zip
 ```
+
+
+## Requirements
+
+* `numpy`
+* `pandas`
+* `matplotlib`
+* `scikit-learn`
+* `pillow`
+* `ipykernel`
+* `jupyter`
+* `tensorflow` (`tensorflow-macos` on Mac)
+
+```shell
+pip install -r requirements.txt
+```
+
 
 ## Project structure
 
 ```
 src
-├── setup.py
 ├── Task1.ipynb
 ├── Task2.ipynb
 ├── Task3.ipynb
@@ -52,3 +70,8 @@ results
 ├── models     [d] storage for models (h5)
 └── plots      [d] storage for plots (png)
 ```
+
+
+## License
+
+MIT

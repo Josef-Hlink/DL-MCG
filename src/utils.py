@@ -1,4 +1,5 @@
 import os
+from time import perf_counter
 from warnings import warn
 
 import numpy as np
@@ -62,3 +63,34 @@ def train_test_split(X: np.ndarray, y: np.ndarray = None, test_size: float = 0.2
     if return_y:
         return X_train, X_test, y_train, y_test
     return X_train, X_test
+
+
+class ProgressBar:
+    done_char = '\033[32m' + '\033[1m' + '━' + '\033[0m'   # green bold ━, reset after
+    todo_char = '\033[31m' + '\033[2m' + '─' + '\033[0m'   # red faint ─, reset after
+
+    def __init__(self, n_iters: int, p_id: str) -> None:
+        self.n_iters = n_iters
+        self.len_n_iters = len(str(n_iters))
+        print(p_id)
+        print('\r' + 50 * self.todo_char + ' 0%', end='')
+        self.start_ts = perf_counter()
+
+    def __call__(self, iteration: int) -> None:
+        """Updates and displays a progress bar on the command line."""
+        percentage = 100 * (iteration+1) // self.n_iters            # floored percentage
+        if percentage == 100 * iteration // self.n_iters: return    # prevent printing same line multiple times
+        steps = 50 * (iteration+1) // self.n_iters                  # chars representing progress
+
+        bar = (steps)*self.done_char + (50-steps)*self.todo_char    # the actual bar
+        
+        runtime = perf_counter() - self.start_ts
+        if iteration+1 == self.n_iters:             # flush last suffix with spaces and place carriage at newline
+            suffix = ' completed in ' + f'{runtime:.2f} sec'  + ' ' * 50 + '\n'
+        else:                                       # print iteration number
+            percentage_float = (100 * (iteration+1) / self.n_iters)
+            eta = (100-percentage_float) / percentage_float * runtime
+            suffix = f' {percentage}% (ETA {eta:.1f} sec) '
+        
+        print('\r' + bar + suffix, end='')
+        return
